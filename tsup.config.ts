@@ -19,8 +19,8 @@ export default defineConfig({
   format: ["esm"],
   dts: true,
   clean: true,
-  shims: true,
   keepNames: true,
+  treeshake: true,
   define: {
     VERSION: JSON.stringify([packageJSON.version]),
   },
