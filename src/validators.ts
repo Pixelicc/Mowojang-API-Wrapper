@@ -1,6 +1,11 @@
 import type { UUID, Player } from "../types/index.d.ts";
 import { undashUUID } from "./utils.js";
 
+const UUID_REGEX = /^[0-9a-f]{12}4[0-9a-f]{19}$/;
+const USERNAME_MIN_1_REGEX = /^[a-zA-Z0-9_]{1,16}$/;
+const USERNAME_MIN_2_REGEX = /^[a-zA-Z0-9_]{2,16}$/;
+const USERNAME_MIN_3_REGEX = /^[a-zA-Z0-9_]{3,16}$/;
+
 /**
  * Validates a UUID string both dashed or undashed
  *
@@ -13,7 +18,7 @@ export const validateUUID = (UUID: UUID): boolean => {
   if (typeof UUID !== "string") return false;
   UUID = undashUUID(UUID);
   if (UUID.length !== 32) return false;
-  return /[0-9a-f]{12}4[0-9a-f]{19}/.test(UUID);
+  return UUID_REGEX.test(UUID);
 };
 
 /**
@@ -28,9 +33,9 @@ export const validateUUID = (UUID: UUID): boolean => {
  */
 export const validateUsername = (username: string, minimumLength?: 1 | 2): boolean => {
   if (typeof username !== "string") return false;
-  if (minimumLength === 1) return /^[a-zA-Z0-9_]{1,16}$/.test(username);
-  if (minimumLength === 2) return /^[a-zA-Z0-9_]{2,16}$/.test(username);
-  return /^[a-zA-Z0-9_]{3,16}$/.test(username);
+  if (minimumLength === 1) return USERNAME_MIN_1_REGEX.test(username);
+  if (minimumLength === 2) return USERNAME_MIN_2_REGEX.test(username);
+  return USERNAME_MIN_3_REGEX.test(username);
 };
 
 /**
