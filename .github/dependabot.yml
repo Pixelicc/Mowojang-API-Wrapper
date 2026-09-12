@@ -6,3 +6,12 @@ updates:
       interval: "monthly"
     cooldown:
       default-days: 7
+    ignore:
+      - dependency-name: "@types/node"
+        update-types:
+          - "version-update:semver-patch"
+          - "version-update:semver-minor"
+      - dependency-name: "*eslint*"
+        update-types:
+          - "version-update:semver-patch"
+          - "version-update:semver-minor"
