@@ -8,7 +8,7 @@ import type { UUID } from "../types/index.d.ts";
  * undashUUID("14727fae-fbdc-4aff-848c-d2713eb9939e"); // "14727faefbdc4aff848cd2713eb9939e"
  * ```
  */
-export const undashUUID = (UUID: UUID): UUID => UUID.replace(/-/g, "").toLowerCase();
+export const undashUUID = (UUID: UUID): UUID => UUID.replaceAll("-", "").toLowerCase();
 
 /**
  * Adds dashes to a UUID string if not already dashed
